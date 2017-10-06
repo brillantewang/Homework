@@ -22,7 +22,7 @@ class Stack
   end
 
   def show
-    p elements
+    elements
   end
 end
 # To test that your code works, create a new instance of the Stack class, and play around with adding and removing elements. Remember, a stack follows the principle of LIFO!
@@ -46,7 +46,7 @@ class Queue
   end
 
   def show
-    p elements
+    elements
   end
 end
 
@@ -71,11 +71,14 @@ class Map
   end
 
   def assign(key, value)
-    if lookup(key)
-      @kvpairs = kvpairs.map { |k, v| k == key ? [k, value] : [k, v] }
-    else
-      kvpairs << [key, value]
-    end
+    pair_idx = kvpairs.index { |pair| pair[0] == key }
+    pair_idx ? kvpairs[pair_idx][1] = value : kvpairs << [key, value]
+
+    # if lookup(key)
+    #   @kvpairs = kvpairs.map { |k, v| k == key ? [k, value] : [k, v] }
+    # else
+    #   kvpairs << [key, value]
+    # end
   end
 
   def lookup(key)
@@ -84,10 +87,10 @@ class Map
   end
 
   def remove(key)
-    @kvpairs = kvpairs.reject { |k, v| k == key }
+    kvpairs.reject! { |k, v| k == key }
   end
 
   def show
-    p kvpairs
+    kvpairs
   end
 end
