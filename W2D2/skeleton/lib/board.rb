@@ -29,9 +29,11 @@ class Board
   def make_move(start_pos, current_player_name)
     hand = @cups[start_pos]
     @cups[start_pos] = []
-    i = (start_pos + 1) % 14
+    i = start_pos
 
     until hand.empty?
+      i = (i + 1) % 14
+
       if i == 6
         @cups[i] << hand.pop if current_player_name == @name1
       elsif i == 13
@@ -39,12 +41,10 @@ class Board
       else
         @cups[i] << hand.pop
       end
-
-      i = (i + 1) % 14
     end
 
     render
-    next_turn((i - 1) % 14)
+    next_turn(i)
   end
 
   def next_turn(ending_cup_idx)
