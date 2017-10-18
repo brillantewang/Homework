@@ -94,7 +94,7 @@ class Playwright
       WHERE name = ?
     SQL
 
-    return nil unless playwright.length > 1
+    return nil unless playwright.length > 0
 
     Playwright.new(playwright.first)
   end
