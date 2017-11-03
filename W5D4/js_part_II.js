@@ -36,7 +36,7 @@ Elephant.prototype.play = function () {
   console.log(`${this.name} is ${this.tricks}!`)
 }
 
-Elephant.prototype.paradeHelper = function () {
+Elephant.prototype.paradeHelper = function (elephant) {
   console.log(`${this.name} is trotting by!`);
 }
 
@@ -55,5 +55,5 @@ let herd = [ellie, charlie, kate, micah];
 
 
 herd.forEach(function (elephant) {
-  elephant.paradeHelper();
+  Elephant.paradeHelper(elephant);
 });
