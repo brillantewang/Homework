@@ -26,6 +26,7 @@ class GiphysSearch extends React.Component {
         <input type="text" onChange={this.handleChange}/>
         <input type="submit"/>
       </form>
+      <GiphysIndex giphys={this.props.giphys}/>
     )
   }
 }
